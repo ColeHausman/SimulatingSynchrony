@@ -17,7 +17,7 @@ graph = parse_nodes(graph_file) #Create a graph from the provided file
 
 comm = MPI.COMM_SELF.Spawn(sys.executable,
                            args=[file_to_run],
-                           maxprocs=5) #Spawn the processes
+                           maxprocs=graph.size) #Spawn the processes
 
 comm.bcast(graph, root=MPI.ROOT) #Broadcast the root to the processes
 
